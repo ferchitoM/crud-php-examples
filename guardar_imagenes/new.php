@@ -28,6 +28,13 @@ if (isset($_POST['create'])) {
 
             //Si se guardó en la base de datos el resultado será true:
             $exito_base_datos = mysqli_query($conn, $query);
+
+            //Si todo salió bien redireccionamos a view_data.php
+            if ($exito_base_datos) {
+                header("Location: view_data.php?mensaje=Los datos se insertaron con exito!");
+            } else {
+                header("Location: view_data.php?mensaje=Error: " . mysqli_error($conn));
+            }
         }
     }
 }
@@ -43,12 +50,12 @@ function generateUniqueId($filename)
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>New data</title>
 </head>
 <style>
     body {
@@ -107,19 +114,8 @@ function generateUniqueId($filename)
             <br><button type="submit" name="create">Crear nuevo</button>
             <button><a href="view_data.php">Listar datos</a></button>
         </footer>
-
-        <?php
-        //Confirmamos si el proceso fue exitoso
-        if (isset($exito_base_datos)) {
-            if ($exito_base_datos) { ?>
-                <p>Los datos se han guardado con exito!</p>
-            <?php
-            } else { ?>
-                <p>Error: <?php echo mysqli_error($conn) ?></p>
-        <?php
-            }
-        } ?>
     </form>
+
 </body>
 
 </html>
