@@ -7,7 +7,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `data` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `description` varchar(50) NOT NULL,
   `document` varchar(50) NOT NULL,
   `image` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
