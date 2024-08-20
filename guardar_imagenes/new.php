@@ -43,7 +43,7 @@ if (isset($_POST['create'])) {
 function generateUniqueId($filename)
 {
     $fileExtension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-    $randomString = bin2hex(random_bytes(8));
+    $randomString = bin2hex(10101010);
     $uniqueId = date('YmdHis') . "_" . $randomString . "." . $fileExtension;
     return $uniqueId;
 }
